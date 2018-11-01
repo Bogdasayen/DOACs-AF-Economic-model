@@ -1,4 +1,4 @@
-# This research was funded by the National Institute for Health Research (NIHR), NIHR Senior Investigator award NF-SI-0611-10168.
+# This research was funded by the National Institute for Health Research (NIHR) Health Technology Assessment programme project number 11/92/17 and NIHR Senior Investigator award NF-SI-0611-10168.
 # Support for R in CEA provided by MRC Hubs for Trials Methodology Research ConDuCT-II (Collaboration and innovation in Difficult and Complex randomised controlled Trials In Invasive procedures) hub
 # Howard Thom 31-October-2018. Bristol Medical School: Population Health Sciences. Bristol University, UK. howard.thom@bristol.ac.uk
 # Details of model described in two publications:
@@ -94,12 +94,12 @@ CEAC<-matrix(NA,n.treatments,length(lambdas))
 # Results matrix presents incremental costs, incremental qalys, and INB
 results.matrix<-matrix(" - (-, -)",nrow=6,ncol=(n.treatments-1))
 colnames(results.matrix)<-treatment.names[1:(n.treatments-1)]
-rownames(results.matrix)<-c("Costs","QALYs","Incremental Costs","Incremental QALYs","Incremental Net Benefit £20,000","Incremental Net Benefit £30,000")
+rownames(results.matrix)<-c("Costs","QALYs","Incremental Costs","Incremental QALYs","Incremental Net Benefit Â£20,000","Incremental Net Benefit Â£30,000")
 incremental.nb2<-incremental.nb<-incremental.qalys<-incremental.costs<-matrix(NA,nrow=(n.treatments-1),ncol=3)
 absolute.costs<-absolute.qalys<-matrix(NA,nrow=n.treatments,ncol=3)
 
 rownames(incremental.nb)<-rownames(incremental.qalys)<-rownames(incremental.costs)<-treatment.names[-n.treatments]
-# Evaluate at lambda=£20000
+# Evaluate at lambda=Â£20000
 i.lambda<-20
 # And at lambda=3000
 i.lambda2<-30
@@ -174,7 +174,7 @@ for(i.lambda in 1:length(lambdas))
 }
 
 #jpeg(file=paste(baseline.directory,"/results/model.evpi.jpg",sep=""))
-plot(c(0,0),xlim=c(min(lambdas),max(lambdas)),ylim=c(0,max(EVPI)),col=0,xlab="Willngess-to-pay (£)",ylab="Per-person EVPI (£)")
+plot(c(0,0),xlim=c(min(lambdas),max(lambdas)),ylim=c(0,max(EVPI)),col=0,xlab="Willngess-to-pay (Â£)",ylab="Per-person EVPI (Â£)")
 lines(lambdas,EVPI)
 #dev.off()
 
@@ -198,7 +198,7 @@ CEAC[2:(n.treatments-1),i.lambda]<-CEAC[2:(n.treatments-1),i.lambda]*mean(rowSum
 
 jpeg(file=paste(baseline.directory,"/results/model.ceac.jpg",sep=""))
 
-plot(c(0,0),col=0,xlim=c(0,max(lambdas)),ylim=c(0,1.3),xlab="Willingness-to-pay (£)",ylab="Probability most cost-effective",yaxt="n")
+plot(c(0,0),col=0,xlim=c(0,max(lambdas)),ylim=c(0,1.3),xlab="Willingness-to-pay (Â£)",ylab="Probability most cost-effective",yaxt="n")
 axis(side=2,at=c(0,0.2,0.4,0.6,0.8,1.0))
 for(i.treatment in 1:(n.treatments-1))
 {
@@ -220,7 +220,7 @@ for(i in 1:length(lambdas))
 
 jpeg(file=paste(baseline.directory,"/results/model.ceaf.jpg",sep=""))
 
-plot(c(0,0),col=0,xlim=c(0,max(lambdas)),ylim=c(0,1),xlab="Willingness-to-pay (£)",ylab="Probability most cost-effective")
+plot(c(0,0),col=0,xlim=c(0,max(lambdas)),ylim=c(0,1),xlab="Willingness-to-pay (Â£)",ylab="Probability most cost-effective")
 for(i in 2:length(lambdas))
 {
 	lines(x=lambdas[(i-1):i],y=CEAF[(i-1):i],lty=expected.NB.which.max[i],col=expected.NB.which.max[i],lwd=2)
@@ -237,7 +237,7 @@ all.incremental.qalys<-total.qalys-total.qalys[,1]
 jpeg(file=paste(baseline.directory,"/results/model.ce.plane.jpg",sep=""))
 scaling=1.75 # To ensure legend doesn't overlap with points
 options(scipen=5)
-plot(c(0,0),col=0,ylim=range(all.incremental.costs)*c(1,scaling),xlim=range(all.incremental.qalys)*c(1,2),ylab="Incremental costs (£)",xlab="Incremental QALYs")
+plot(c(0,0),col=0,ylim=range(all.incremental.costs)*c(1,scaling),xlim=range(all.incremental.qalys)*c(1,2),ylab="Incremental costs (Â£)",xlab="Incremental QALYs")
 # Include X and Y axes
 lines(c(0,0),range(all.incremental.costs)*c(1,scaling))
 lines(range(all.incremental.qalys)*c(1,2),c(0,0))
