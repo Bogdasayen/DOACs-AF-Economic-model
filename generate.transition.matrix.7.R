@@ -1,4 +1,4 @@
-# This research was funded by the National Institute for Health Research (NIHR), NIHR Senior Investigator award NF-SI-0611-10168.
+# This research was funded by the National Institute for Health Research (NIHR) Health Technology Assessment programme project number 11/92/17 and NIHR Senior Investigator award NF-SI-0611-10168.
 # Support for R in CEA provided by MRC Hubs for Trials Methodology Research ConDuCT-II (Collaboration and innovation in Difficult and Complex randomised controlled Trials In Invasive procedures) hub
 # Howard Thom 31-October-2018. Bristol Medical School: Population Health Sciences. Bristol University, UK. howard.thom@bristol.ac.uk
 # Details of model described in two publications:
