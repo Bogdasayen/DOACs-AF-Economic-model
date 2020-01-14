@@ -431,11 +431,10 @@ generate.probabilities<-function(n.samples,ages=c(70:100),event.costs,event.util
 
 		#transition.matrix[i.state,new.state.indices]<-probability.matrix[i.state,event.state.codes!="" & event.names!="Death (all causes)"]
 		# Probability stay (always sum of "Stay" and transient states
-		# If no discontinuation/switching
-		transition.matrix[[age]][,i.state,i.state]<-transition.matrix[[age]][,i.state,i.state]+rowSums(probability.matrix[[age]][,i.state,event.state.codes=="" & event.names!="Death (all causes)"])*(1-rowSums(event.switch.probs[,event.state.codes==""]))
+		transition.matrix[[age]][,i.state,i.state]<-transition.matrix[[age]][,i.state,i.state]+ rowSums(probability.matrix[[age]][,i.state,event.state.codes=="" & event.names!="Death (all causes)"]*(1-event.switch.probs[,event.state.codes==""]))                  
 		# If discontinuation/switching (sum of transient event switching probabilities and no event switching probability)
-		transition.matrix[[age]][,i.state,i.state+treatment.switch.indices[i.treatment]]<-transition.matrix[[age]][,i.state,i.state+treatment.switch.indices[i.treatment]]+rowSums(probability.matrix[[age]][,i.state,event.state.codes=="" & event.names!="Death (all causes)"])*rowSums(event.switch.probs[,event.state.codes==""])
-
+		transition.matrix[[age]][,i.state,i.state+treatment.switch.indices[i.treatment]]<-transition.matrix[[age]][,i.state,i.state+treatment.switch.indices[i.treatment]]+rowSums(probability.matrix[[age]][,i.state,event.state.codes=="" & event.names!="Death (all causes)"]*(event.switch.probs[,event.state.codes==""]))
+		
 		# Probability death (always just the probability of death)
 		transition.matrix[[age]][,i.state,n.states]<-probability.matrix[[age]][,i.state,event.names=="Death (all causes)"]
 	}
